@@ -8,7 +8,7 @@ import EditableImage from "@/components/cms/EditableImage";
 import EditableButton from "@/components/cms/EditableButton";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail, Clock, Pen, BookOpen, Newspaper, Gamepad2, PenTool, Camera, Gift } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Pen, BookOpen, Newspaper, Gamepad2, PenTool, Camera, Gift, Printer, Package, CreditCard, Stamp, IdCard } from "lucide-react";
 
 /* ─── Fade ─── */
 function Fade({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -121,9 +121,9 @@ function Rayons() {
           {[
             { icon: Gamepad2, key: "jeux", label: "Jeux", desc: "Jeux de société, puzzles",
               img: "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=600&q=80" },
-            { icon: Camera, key: "photos", label: "Photos", desc: "Tirages et services photo",
+            { icon: Camera, key: "photos", label: "Photos", desc: "Photos d'identité, tirages, impressions",
               img: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=600&q=80" },
-            { icon: Gift, key: "cadeaux", label: "Cadeaux", desc: "Idées originales",
+            { icon: Gift, key: "cadeaux", label: "Services & cadeaux", desc: "Mondial Relay, FDJ, idées cadeaux",
               img: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=600&q=80" },
           ].map((item, i) => (
             <Fade key={item.key} delay={i * 0.05} className="relative group overflow-hidden">
@@ -189,6 +189,45 @@ function About() {
             defaultText="Nous contacter" defaultUrl="#contact"
             className="border border-[var(--color-ink)]/30 text-[var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-white px-8 py-3 text-xs tracking-[0.2em] uppercase transition-all duration-500" />
         </Fade>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
+   SERVICES — Prestations détaillées
+   ═══════════════════════════════════════════════ */
+function Services() {
+  const prestations = [
+    { icon: IdCard, title: "Photos d'identité", desc: "Passeport, carte nationale, permis de conduire, tout document officiel" },
+    { icon: Printer, title: "Impressions & copies", desc: "Photocopies N&B et couleur, impressions USB/internet, plastification, reliures" },
+    { icon: Package, title: "Mondial Relay", desc: "Point relais colis — envoi et réception de vos colis" },
+    { icon: CreditCard, title: "FDJ & recharges", desc: "Jeux Française des Jeux, recharges téléphoniques, coupons internet" },
+    { icon: Stamp, title: "Timbres & fax", desc: "Timbres-poste, envoi de fax, services postaux" },
+    { icon: PenTool, title: "CV & cartes de visite", desc: "Réalisation de CV personnalisés, cartes de visite sur mesure" },
+  ];
+
+  return (
+    <section className="py-16 md:py-20 bg-[var(--color-bg-ink)]">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <Fade className="text-center mb-12">
+          <EditableText contentKey="home.services.label" defaultValue="Nos services" tag="p"
+            className="text-[var(--color-gold)] text-xs tracking-[0.4em] uppercase mb-2" />
+          <EditableText contentKey="home.services.title" defaultValue="Bien plus qu'une librairie" tag="h2"
+            className="font-display text-3xl md:text-5xl text-white" />
+        </Fade>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          {prestations.map((p, i) => (
+            <Fade key={p.title} delay={i * 0.05}>
+              <div className="text-center">
+                <p.icon className="w-5 h-5 text-[var(--color-gold)] mx-auto mb-3" />
+                <h3 className="text-white font-medium text-sm mb-1">{p.title}</h3>
+                <p className="text-white/40 text-xs leading-relaxed">{p.desc}</p>
+              </div>
+            </Fade>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -315,6 +354,7 @@ export default function Home() {
       <Rayons />
       <Citation />
       <About />
+      <Services />
       <CoupsDeCoeur />
       <Contact />
       <Footer />
