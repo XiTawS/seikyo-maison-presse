@@ -201,8 +201,8 @@ function Services() {
   const prestations = [
     { icon: IdCard, title: "Photos d'identité", desc: "Passeport, carte nationale, permis de conduire, tout document officiel" },
     { icon: Printer, title: "Impressions & copies", desc: "Photocopies N&B et couleur, impressions USB/internet, plastification, reliures" },
-    { icon: Package, title: "Mondial Relay", desc: "Point relais colis — envoi et réception de vos colis", logo: "https://res.cloudinary.com/dxcudyuno/image/upload/v1772802479/logos/mondial-relay.svg" },
-    { icon: CreditCard, title: "FDJ & recharges", desc: "Jeux Française des Jeux, recharges téléphoniques, coupons internet", logo: "https://res.cloudinary.com/dxcudyuno/image/upload/v1772802468/logos/fdj.svg" },
+    { icon: Package, title: "Mondial Relay", desc: "Point relais colis — envoi et réception de vos colis" },
+    { icon: CreditCard, title: "FDJ & recharges", desc: "Jeux Française des Jeux, recharges téléphoniques, coupons internet" },
     { icon: Stamp, title: "Timbres & fax", desc: "Timbres-poste, envoi de fax, services postaux" },
     { icon: PenTool, title: "CV & cartes de visite", desc: "Réalisation de CV personnalisés, cartes de visite sur mesure" },
   ];
@@ -218,14 +218,10 @@ function Services() {
         </Fade>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {prestations.map((p: any, i: number) => (
+          {prestations.map((p, i) => (
             <Fade key={p.title} delay={i * 0.05}>
               <div className="text-center">
-                {p.logo ? (
-                  <img src={p.logo} alt={p.title} className="h-8 mx-auto mb-3 object-contain" />
-                ) : (
-                  <p.icon className="w-5 h-5 text-[var(--color-gold)] mx-auto mb-3" />
-                )}
+                <p.icon className="w-5 h-5 text-[var(--color-gold)] mx-auto mb-3" />
                 <h3 className="text-white font-medium text-sm mb-1">{p.title}</h3>
                 <p className="text-white/40 text-xs leading-relaxed">{p.desc}</p>
               </div>
